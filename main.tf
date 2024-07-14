@@ -41,10 +41,10 @@ variable "bucket_count" {
 }
 
 locals {
-  bucket_names = [for idx in range(var.bucket_count) : "${var.environment}-example-bucket-${idx + 1}"]
+  bucket_names = [for idx in range(var.bucket_count) : "${var.environment}-infrasity-bucket-${idx + 1}"]
 }
 
-resource "aws_s3_bucket" "example" {
+resource "aws_s3_bucket" "infrasity" {
   for_each = { for idx, name in local.bucket_names : idx => name }
 
   bucket = each.value
